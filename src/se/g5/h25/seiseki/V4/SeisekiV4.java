@@ -47,3 +47,17 @@ abstract class Student {
 }
 // TODO:　抽象クラスである Studentを継承した KTCStudentクラスを作成して
 // プログラムを完成させる
+class KTCStudent extends Student {
+	private static int borderPoint = 50;
+	public static void setBorderPoint( int val ){
+		borderPoint = val;
+	}
+	@Override
+	public String judgment(int seiseki) {
+		if( seiseki >= borderPoint){
+			return "合格";
+		}else{
+			return "不合格";
+		}
+	}
+}
