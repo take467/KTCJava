@@ -15,9 +15,15 @@ public class Rippotai {
 	 * </ul>
 	 * </p>
 	 * @param val ˆê•Ó‚Ì’·‚³
+	 * @return 
 	 */
-	void setHen(int val){
-		this.hen = val;
+	boolean setHen(int val){
+		if( val < 0 ) {
+			return false;
+		}else{
+			this.hen = val;	
+			return true;
+		}
 	}
 	/**
 	 * <p>—§•û‘Ì‚Ì•\–ÊÏ‚ğ‹‚ß‚éB</p>
