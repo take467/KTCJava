@@ -20,10 +20,11 @@ public class Janken08 {
 		String[] label = new String[] { "グー", "チョキ", "パー" };
 
 		int winCount = 0;
+		int loseCount = 0;
 		String work = "";
 		for( int i = 0 ; i < 10 ; i++ ) {
 			// キーボードから入力を受け取る
-			System.out.println("じゃんけんゲーム：あと " + ( 10 - i) + "回出来ます。(途中で終了は q を入力)");
+			System.out.println("\n\nじゃんけんゲーム：あと " + ( 10 - i) + "回出来ます。(途中で終了は q を入力)");
 			System.out.print(( i + 1 ) + " 回目　0:グー　１：チョキ　２：パー\nあなたの手は？:");
 			Scanner scan = new Scanner(System.in);
 			work = scan.next(); // 　文字として取り込む
@@ -51,17 +52,27 @@ public class Janken08 {
 				break; // グー
 			}
 			if (you == pc) {
-				System.out.println("あいこ\n");
+				System.out.println("あいこ");
 			} else if (pc == lose) {
-				System.out.println("あなたの勝ち!\n");
+				System.out.println("あなたの勝ち!");
 				winCount++;
 				
 			} else {
-				System.out.println("あなたの負け\n");
+				System.out.println("あなたの負け");
+				loseCount++;
 			}
-			double winRate = (double) winCount / ( i + 1) * 100.0;  
-			System.out.println("勝率:" + winRate + "%");
+			//double winRate = (double) winCount / ( i + 1) * 100.0;  
+			//System.out.println("勝率:" + winRate + "%");
+			System.out.println(winCount + "勝　" + loseCount + "敗");
 		}
+		//System.out.print("\n終了\n" + winCount + "勝　" + loseCount + "敗で");
 		System.out.println("終了");
+		if( winCount > loseCount ){
+			System.out.println("あなたの勝ち!");
+		}else if( winCount < loseCount ){
+			System.out.println("あなたの負け");
+		}else{
+			System.out.println("引き分け");
+		}
 	}
 }
