@@ -3,9 +3,8 @@ package ComputerDrill01.g2.h25.Janken;
 import java.util.Scanner;
 
 /**
- * 1. 引数ではなく、キーボードからじゃんけんの手を指定する。 
- * 2. "q"　(quit) が入力されるまでじゃんけんを繰り返す
- * 3. 最大１０回勝負
+ * 1. 引数ではなく、キーボードからじゃんけんの手を指定する。 2. "q"　(quit) が入力されるまでじゃんけんを繰り返す
+ * 
  * @author fujisawa
  * 
  */
@@ -19,10 +18,9 @@ public class Janken07 {
 		String[] label = new String[] { "グー", "チョキ", "パー" };
 
 		String work = "";
-		for( int i = 0 ; i < 10 ; i++ ) {
+		while (true) {
 			// キーボードから入力を受け取る
-			System.out.println("じゃんけんゲーム：あと " + ( 10 - i) + "回出来ます。(途中で終了は q を入力)");
-			System.out.print(( i + 1 ) + " 回目　0:グー　１：チョキ　２：パー\nあなたの手は？:");
+			System.out.print("0:グー　１：チョキ　２：パー\nあなたの手は？:");
 			Scanner scan = new Scanner(System.in);
 			work = scan.next(); // 　文字として取り込む
 			if (work.equals("q")) {
