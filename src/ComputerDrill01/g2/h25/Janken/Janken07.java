@@ -3,7 +3,8 @@ package ComputerDrill01.g2.h25.Janken;
 import java.util.Scanner;
 
 /**
- * 1. 引数ではなく、キーボードからじゃんけんの手を指定する。 2. "q"　(quit) が入力されるまでじゃんけんを繰り返す
+ * 1. 引数ではなく、キーボードからじゃんけんの手を指定する。 
+ * 2. "q"　(quit) が入力されるまでじゃんけんを繰り返す
  * 
  * @author fujisawa
  * 
