@@ -27,7 +27,7 @@ public class Janken09 {
 		String work = "";
 		for( int i = 0 ; i < 10 ; i++ ) {
 			// キーボードから入力を受け取る
-			System.out.println("じゃんけんゲーム：あと " + ( 10 - i) + "回出来ます。(途中で終了は q を入力)");
+			System.out.println("\nじゃんけんゲーム：あと " + ( 10 - i) + "回出来ます。(途中で終了は q を入力)");
 			System.out.print(( i + 1 ) + " 回目　0:グー　１：チョキ　２：パー\nあなたの手は？:");
 			Scanner scan = new Scanner(System.in);
 			work = scan.next(); // 　文字として取り込む
@@ -84,12 +84,19 @@ public class Janken09 {
 					break;
 			}
 			gameCount++;
-			System.out.print(gameCount + "回目；");
+			//System.out.print(gameCount + "回目；");
 
-			System.out.println(msg);
+			//System.out.println(msg);
 		}
-		double winRate = (double) winCount / gameCount * 100.0;  
-		System.out.println(winCount + "勝," + loseCount + "敗、" + ( gameCount - winCount - loseCount ) + "引き分け　勝率：" +  + winRate + "%");
 		System.out.println("終了");
+		System.out.println(winCount + "勝," + loseCount + "敗、" + ( gameCount - winCount - loseCount ) + "引き分け");
+		if( winCount > loseCount ){
+			System.out.println("あなたの勝ち!");
+		}else if( winCount < loseCount ){
+			System.out.println("あなたの負け");
+		}else{
+			System.out.println("引き分け");
+		}
+
 	}
 }

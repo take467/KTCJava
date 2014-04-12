@@ -102,8 +102,15 @@ public class Janken10 {
 			System.out.print("あなた：" + label[you] + " , PC:" + label[pc] + " => ");
 			System.out.println(msg);
 		}
-		double winRate = (double) winCount / gameCount * 100.0;  
-		System.out.println(winCount + "勝," + loseCount + "敗、" + ( gameCount - winCount - loseCount ) + "引き分け　勝率：" +  + winRate + "%");
 		System.out.println("終了");
+		System.out.println(winCount + "勝," + loseCount + "敗、" + ( gameCount - winCount - loseCount ) + "引き分け");
+		if( winCount > loseCount ){
+			System.out.println("あなたの勝ち!");
+		}else if( winCount < loseCount ){
+			System.out.println("あなたの負け");
+		}else{
+			System.out.println("引き分け");
+		}
+
 	}
 }
