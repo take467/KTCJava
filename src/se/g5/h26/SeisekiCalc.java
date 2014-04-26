@@ -12,11 +12,11 @@ class Student {
 	private int score;
 	
 	// コンストラクターは複数定義できる
-	// 1. スコアをString型で受け取る
+	// 1. スコアをString型で受け取るコンストラクタ
 	Student(String name, String score){
 		this(name, Integer.parseInt(score));
 	}
-	// 2. スコアをint型で受け取る
+	// 2. スコアをint型で受け取るコンストラクタ
 	Student(String name, int score){
 		this.name = name;
 		this.score = score;
