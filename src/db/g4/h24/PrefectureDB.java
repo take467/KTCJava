@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
 public class PrefectureDB {
@@ -15,8 +16,8 @@ public class PrefectureDB {
 		dbPreProcess();  // 接続，初期化などデータベースを利用するための前準備
 		
 		
-		dbMain(); // prefectures テーブルの内容を表示する
-		
+		//dbMain(); // prefectures テーブルの内容を表示する
+		preparedStatemetDemo("石川県");
 		
 		dbPostProcess();  // データベースを切り離す
 		
@@ -25,6 +26,24 @@ public class PrefectureDB {
 	private static void dbPostProcess() throws SQLException {
 
 		conn.close();
+	}
+	
+	private static void preparedStatemetDemo(String name) throws SQLException{
+		String sql = "SELECT * FROM prefectures WHERE name = ? ";
+		PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(sql);
+
+		pstmt.setString(1, name);
+		
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			String  col1 = rs.getString("id");
+			String  col2 = rs.getString("name");
+			String  col3 = rs.getString("kana");
+			
+			System.out.printf("%s | %4s | %s \n",col1,col2,col3);
+		}
+		rs.close();
+		pstmt.close();
 	}
 
 	private static void dbMain() throws SQLException {
