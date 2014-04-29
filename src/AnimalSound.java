@@ -1,10 +1,48 @@
 import java.util.ArrayList;
 
 
-public class AnimalSounds {
+public class AnimalSound {
 
 	public static void main(String[] args) {
 		
+		doAllAnimals0();
+		
+		// doAllAnimals1();
+		
+		//doAllAnimals2();
+		
+	}
+	public static void doAllAnimals0(){
+
+		Dog dog   = new Dog();
+		dog.sound();
+		
+		Sloth sloth = new Sloth();
+		sloth.sound();
+		
+		Pig pig   = new Pig();
+		pig.sound();
+		
+		
+		Cat cat   = new Cat();
+		cat.sound();
+	}
+	public static void doAllAnimals1(){
+		Animal  animal;
+		animal  = new Dog();
+		animal.sound();
+		
+		animal  = new Sloth();
+		animal.sound();
+		
+		animal  = new Pig();
+		animal.sound();
+		
+		
+		animal  = new Cat();
+		animal.sound();
+	}
+	public static void doAllAnimals2(){
 		ArrayList animals = new ArrayList();
 		animals.add(new Dog());
 		animals.add(new Pig());
@@ -21,7 +59,7 @@ public class AnimalSounds {
 // クラスにする意味がないので、インタフェースにするか、抽象クラスにする
 class Animal{
 	public void sound(){
-		System.out.println("Who am I?");
+		
 	}
 }
 
@@ -40,5 +78,10 @@ class Pig extends Animal{
 class Cat extends Animal{
 	public void sound(){
 		System.out.println("Cat mew mew.");
+	}
+}
+class Sloth extends Animal {
+	public void sound(){
+		System.exit(1);
 	}
 }
