@@ -1,4 +1,5 @@
-package se.g5.h26;
+package se.g5.h26.No3
+;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;

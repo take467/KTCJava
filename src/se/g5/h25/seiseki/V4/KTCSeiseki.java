@@ -4,11 +4,11 @@ public class KTCSeiseki {
 	public static void main(String[] args) {
 
 		// 金沢高専の赤点は５０点未満
-		KTCStudent.setBorderPoint(50);
 
 		KTCStudent s1 = new KTCStudent();
 		KTCStudent s2 = new KTCStudent();
 
+		s1.borderPoint = 50;
 		s1.setData("田中太郎", 99, 30, 77);
 		s2.setData("鈴木二郎", 81, 60, 59);
 		s1.display();
@@ -18,11 +18,8 @@ public class KTCSeiseki {
 }
 
 class KTCStudent extends Student {
-	static private int borderPoint = 60;
-
-	public static void setBorderPoint(int v) {
-		borderPoint = v;
-	}
+	// スタティックの有無でソースコードが変わる
+	public static int borderPoint;
 
 	public String judgment(int seiseki) {
 		if (seiseki >= borderPoint) {
