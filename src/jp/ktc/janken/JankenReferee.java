@@ -1,6 +1,5 @@
 package jp.ktc.janken;
 
-
 public class JankenReferee {
 	/**
 	 * ルール　
