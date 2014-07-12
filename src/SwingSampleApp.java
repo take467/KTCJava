@@ -11,102 +11,83 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-/**
- * 夏休みの宿題としてつくらせる課題の一つ
- * 
- * @author fujisawa
- *
- */
+
+
 
 public class SwingSampleApp extends JFrame implements ActionListener {
-	private static final long serialVersionUID= 1L;
-	JButton gu,choki,pa;
+	JButton b1,b2;
 	JTextArea ta;
 	
 	public SwingSampleApp(){
 		this.setSize(300,200);
 		ta = new JTextArea();
 		JScrollPane scroll = new JScrollPane(ta);
+		
 		this.add(scroll,BorderLayout.CENTER);
-		gu = new JButton("グー");
-		gu.addActionListener(this);
-		choki = new JButton("チョキ");
-		choki.addActionListener(this);
-		pa = new JButton("パー");
-		pa.addActionListener(this);
+		b1 = new JButton("Load");
+		b1.addActionListener(this);
+		b2 = new JButton("Save");
+		b2.addActionListener(this);
 		
 		JPanel p = new JPanel();
-		p.add(gu);
-		p.add(choki);
-		p.add(pa);
-		
-		this.add(p,BorderLayout.SOUTH);
+		p.add(b1);
+		p.add(b2);
+		this.add(p,BorderLayout.NORTH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		new SwingSampleApp();
-
 	}
 	@Override
 	public void actionPerformed(ActionEvent ev) {
-		String[] label = new String[] { "グー", "チョキ", "パー" };
-		
-		int you = -1;
-		if( ev.getSource() == gu ){
-			you = 0;
-		}else if( ev.getSource() == choki){
-			you = 1;
+		if( ev.getSource() == b1 ){
+			this.load();
 		}else{
-			you = 2;
+			this.save();
 		}
-		int pc = getComputerHand();
-		// 判定
-		int result = judge(you,pc);
 		
-		// 結果表示
-		String msg = "あなた：" + label[you] + " PC:" + label[pc] + " => ";
-		
-		switch (result) {
-		case 1: 
-			msg += "あなたの勝ち!";
-			break; 
-		case 0: 
-			msg += "あなたの負け";
-			break; 
-		case 2: 
-			msg += "あいこ";
-			break; 
-		}
-		msg += "\n\n";
-		
-		ta.setText(msg);
 	}
-	public int getComputerHand(){
-		int pc = (int) (Math.random() * 3);
-		return pc;
-	}
-	public int judge(int you,int pc){
-		// PCが負ける手を求める
-		int lose = -1;
-		switch (you) {
-		case 0: /* グー */
-			lose = 1;
-			break; // チョキ
-		case 1: /* チョキ */
-			lose = 2;
-			break; // パー
-		case 2: /* パー */
-			lose = 0;
-			break; // グー
+	private void load() {
+		FileReader fr = null;
+		BufferedReader br = null;
+		try{
+			fr = new FileReader("sample.txt");
+			br = new BufferedReader(fr);
+			String str = "";
+			String rstr = "";
+			while((rstr = br.readLine()) != null ){
+				str += rstr + "\r\n";
+			}
+			ta.setText(str);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				br.close();
+			}catch(Exception ex2){
+				ex2.printStackTrace();
+			}
 		}
-		// 結果判定
-		if (you == pc) {
-			return 2;
-		} else if (pc == lose) {
-			return 1;
-		} else {
-			return 0;
+		
+	}
+	private void save() {
+		FileWriter fw = null;
+		BufferedWriter bw = null;
+		try{
+			fw = new FileWriter("sample.txt");
+			bw = new BufferedWriter(fw);
+			bw.write(ta.getText());
+			bw.flush();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				bw.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
 		}
 	}
 }
